@@ -1,0 +1,40 @@
+/*
+. Escreva um programa em C que contenha uma função que recebe dois números inteiros I e J, e
+calcule a expressão I!/J!*(I-J)!. Esta função deve invocar outra função para calcular o fatorial de
+cada número individualmente. Dica: use a mesma função desenvolvida no exercício anterior. 
+*/
+
+#include <stdio.h>
+
+    int fatorial(int N){
+        int resultado=1;
+        for(int i=1;i<=N; i++){
+            resultado*=i;
+        }
+        return resultado;
+    }
+    int calcularExpressao(int I, int J) {
+    if (I < J || I < 0 || J < 0) {
+        printf("Valores inválidos: I deve ser maior ou igual a J e os dois não podem ser negativos.\n");
+        return -1; 
+    }
+    
+    int fatorialI = fatorial(I);
+    int fatorialJ = fatorial(J);
+    int fatorialIJ = fatorial(I - J);
+    
+    return fatorialI / (fatorialJ * fatorialIJ);
+}
+
+int main() {
+    int I, J;
+    printf("Digite dois números inteiros que não são negativos I e J (I tem que ser maior que o J): \n ");
+    scanf("%d %d", &I, &J);
+    
+    int resultado = calcularExpressao(I, J);
+    if (resultado != -1) {
+        printf("O resultado da expressão %d! / (%d! * (%d-%d)!) é %d\n", I, J, I, J, resultado);
+    }
+    
+    return 0;
+}
