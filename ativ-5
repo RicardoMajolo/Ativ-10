@@ -1,0 +1,61 @@
+/*
+. Escreva um programa em C que contenha uma função que recebe dois números inteiros I e J, e
+calcule a expressão I!/J!*(I-J)!. Esta função deve invocar outra função para calcular o fatorial de
+cada número individualmente. Dica: use a mesma função desenvolvida no exercício anterior. 
+*/
+
+#include <stdio.h>
+
+int verificarData(int dia, int mes, int ano) {
+    
+    if (ano < 0) {
+        return 0; 
+    }
+    
+    
+    if (mes < 1 || mes > 12) {
+        return 0;
+    }
+    
+    
+    int diasNoMes;
+    switch (mes) {
+        case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+            diasNoMes = 31; 
+            break;
+        case 4: case 6: case 9: case 11:
+            diasNoMes = 30; 
+            break;
+        case 2:
+            
+            if ((ano % 4 == 0 && ano % 100 != 0) || (ano % 400 == 0)) {
+                diasNoMes = 29; 
+            } else {
+                diasNoMes = 28; 
+            }
+            break;
+        default:
+            return 0; 
+    }
+    
+   
+    if (dia < 1 || dia > diasNoMes) {
+        return 0; 
+    }
+    
+    return 1; 
+}
+
+int main() {
+    int dia, mes, ano;
+    printf("Digite o dia, o mês e o ano: ");
+    scanf("%d %d %d", &dia, &mes, &ano);
+    
+    if (verificarData(dia, mes, ano)) {
+        printf("Data válida.\n");
+    } else {
+        printf("Data inválida.\n");
+    }
+    
+    return 0;
+}
