@@ -1,0 +1,26 @@
+/*
+Faça uma função que receba um número inteiro N, maior ou igual a 0, e retorne o valor de seu
+fatorial (N!). O fatorial de um número N é calculado por 1 * 2 * 3 *...* N.
+*/
+
+#include <stdio.h>
+
+    int fatorial(int N){
+        int resultado=1;
+        for(int i=1;i<=N; i++){
+            resultado*=i;
+        }
+        return resultado;
+    }
+    int main(){
+        int N;
+        printf("Digite um numero inteiro que não seja negativo \n");
+        scanf("%d", &N);
+        if (N < 0) {
+        printf("Número inválido, o número deve ser maior ou igual a 0\n");
+    } else {
+        printf("O fatorial de %d é %d\n", N, fatorial(N));
+    }
+    
+    return 0;
+}
